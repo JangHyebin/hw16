@@ -11,21 +11,3 @@ requests를 통해 웹에서 무언가를 가져와서,
 
 이 사이트의 사용빈도를 분석하는 목적은 <2019년도 예산안 및 기금운용계획안 제출에 즈음한 국회시정연설>에 뭐가 제일 중요한 핵심어인지를 확인하고
 주제를 쉽게 많이 나오는 단어들로 알 수 있는 가장 간단한 방법이라고 생각하여 분석하고자 합니다.
-
-
-import requests
-import re
-import collections
-
-r= requests.get("http://www.newstomato.com/ReadNews.aspx?no=855190")
-r.encoding='utf8'
-data=r.text
-data=data[data.find("존경하는 국민 여러분,"): data.find("감사합니다.")+6]
-data = re.sub('<br/*>',' ', data)
-data = data.replace('.', ' ')
-data = data.replace(',', ' ') 
-data = data.split()
-
-c=collections.Counter(data)
-for k in sorted(c, key=c. __getitem__, reverse=True):
-    print(k,c[k])
